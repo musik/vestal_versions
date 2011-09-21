@@ -5,22 +5,18 @@ module VestalVersions
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor :updated_by_user
+      attr_accessor :updated_by
       Version.class_eval{ include VersionMethods }
     end
 
     # Methods added to versioned ActiveRecord::Base instances to enable versioning with additional
     # user information.
     module InstanceMethods
-      def updated_by
-        versions.last.try :user
-      end
-
       private
       # Overrides the +version_attributes+ method to include user information passed into the
-      # parent object, by way of a +updated_by_user+ attr_accessor.
+      # parent object, by way of a +updated_by+ attr_accessor.
       def version_attributes
-        super.merge(:user => updated_by_user)
+        super.merge(:user => updated_by)
       end
     end
 
