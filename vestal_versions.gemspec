@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.summary     = "Keep a DRY history of your ActiveRecord models' changes"
   s.description = "Keep a DRY history of your ActiveRecord models' changes"
 
-  s.files         = `git ls-files lib`.split("\n") + ['README.rdoc', 'LICENSE']
-  s.test_files    = `git ls-files spec`.split("\n")
+  s.files         = Dir['lib/**/*.rb'] + ['README.rdoc', 'LICENSE']
+  s.test_files    = Dir['spec/**/*.rb']
   s.require_paths = ['lib']
 
   s.add_dependency 'activerecord', '>= 3.0.0'
