@@ -10,12 +10,12 @@ describe VestalVersions::Users do
   end
 
   it 'accepts and returns an ActiveRecord user' do
-    user.update_attributes(:first_name => 'Stephen', :updated_by => updated_by)
+    user.update_attributes(:first_name => 'Stephen', :user => updated_by)
     user.versions.last.user.should == updated_by
   end
 
   it 'accepts and returns a string user name' do
-    user.update_attributes(:first_name => 'Stephen', :updated_by => updated_by.name)
+    user.update_attributes(:first_name => 'Stephen', :user => updated_by.name)
     user.versions.last.user.should == updated_by.name
   end
 end
