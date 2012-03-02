@@ -149,7 +149,7 @@ There are a handful of exciting new additions in version 1.0 of <tt>vestal_versi
 
   Instead of passing a simple string to the <tt>updated_by</tt> setter, you can pass a model instance, such as an ActiveRecord user or administrator. The association will be saved polymorphically alongside the version.
 
-    @user.update_attributes(:last_name => "Jobs", :updated_by => current_user)
+    @user.update_attributes(:last_name => "Jobs", :updated_by => updater)
     @user.versions.last.user # => #<User first_name: "Steven", last_name: "Tyler">
 
 * Global configuration. The new <tt>vestal_versions</tt> Rails generator also writes an initializer with instructions on how to set application-wide options for the <tt>versioned</tt> method.
