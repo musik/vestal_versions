@@ -5,7 +5,7 @@ module VestalVersions
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor :updated_by
+      attr_accessor :updater
       Version.class_eval{ include VersionMethods }
     end
 
@@ -13,9 +13,9 @@ module VestalVersions
     # user information.
     private
     # Overrides the +version_attributes+ method to include user information passed into the
-    # parent object, by way of a +updated_by+ attr_accessor.
+    # parent object, by way of a +updater+ attr_accessor.
     def version_attributes
-      super.merge(:user => updated_by)
+      super.merge(:user => updater)
     end
   end
 
