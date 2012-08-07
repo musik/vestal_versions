@@ -4,8 +4,8 @@ describe VestalVersions::Versions do
   let(:user){ User.create(:name => 'Stephen Richert') }
 
   before do
-    user.update_attribute(:name, 'Steve Jobs')
-    user.update_attribute(:last_name, 'Richert')
+    user.update_attributes(:name => 'Steve Jobs')
+    user.update_attributes(:last_name => 'Richert')
     @first_version, @last_version = user.versions.first, user.versions.last
   end
 
@@ -22,8 +22,8 @@ describe VestalVersions::Versions do
 
   it "is not equal a separate model's version with the same number" do
     other = User.create(:name => 'Stephen Richert')
-    other.update_attribute(:name, 'Steve Jobs')
-    other.update_attribute(:last_name, 'Richert')
+    other.update_attributes(:name => 'Steve Jobs')
+    other.update_attributes(:last_name => 'Richert')
     first_version, last_version = other.versions.first, other.versions.last
 
     @first_version.should_not == first_version

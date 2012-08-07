@@ -9,16 +9,16 @@ describe VestalVersions::Control do
 
   shared_examples_for 'a version preserver' do |method|
     it 'creates one version with a model update' do
-      user.send(method){ user.update_attribute(:last_name, 'Jobs') }
+      user.send(method){ user.update_attributes(:last_name => 'Jobs') }
 
       user.versions.count.should == @count
     end
 
     it 'creates one version with multiple model updates' do
       user.send(method) do
-        user.update_attribute(:first_name, 'Stephen')
-        user.update_attribute(:last_name, 'Jobs')
-        user.update_attribute(:first_name, 'Steve')
+        user.update_attributes(:first_name => 'Stephen')
+        user.update_attributes(:last_name => 'Jobs')
+        user.update_attributes(:first_name => 'Steve')
       end
 
       user.versions.count.should == @count
@@ -28,16 +28,16 @@ describe VestalVersions::Control do
 
   shared_examples_for 'a version incrementer' do |method|
     it 'creates one version with a model update' do
-      user.send(method){ user.update_attribute(:last_name, 'Jobs') }
+      user.send(method){ user.update_attributes(:last_name => 'Jobs') }
 
       user.versions.count.should == @count + 1
     end
 
     it 'creates one version with multiple model updates' do
       user.send(method) do
-        user.update_attribute(:first_name, 'Stephen')
-        user.update_attribute(:last_name, 'Jobs')
-        user.update_attribute(:first_name, 'Steve')
+        user.update_attributes(:first_name => 'Stephen')
+        user.update_attributes(:last_name => 'Jobs')
+        user.update_attributes(:first_name => 'Steve')
       end
 
       user.versions.count.should == @count + 1
@@ -57,13 +57,13 @@ describe VestalVersions::Control do
       other_user_count = other_user.versions.count
 
       User.skip_version do
-        user.update_attribute(:first_name, 'Stephen')
-        user.update_attribute(:last_name, 'Jobs')
-        user.update_attribute(:first_name, 'Steve')
+        user.update_attributes(:first_name => 'Stephen')
+        user.update_attributes(:last_name => 'Jobs')
+        user.update_attributes(:first_name => 'Steve')
 
-        other_user.update_attribute(:first_name, 'Stephen')
-        other_user.update_attribute(:last_name, 'Jobs')
-        other_user.update_attribute(:first_name, 'Steve')
+        other_user.update_attributes(:first_name => 'Stephen')
+        other_user.update_attributes(:last_name => 'Jobs')
+        other_user.update_attributes(:first_name => 'Steve')
       end
       user.versions.count.should == @count
       other_user.versions.count.should == @other_user_count
@@ -81,8 +81,8 @@ describe VestalVersions::Control do
       let(:last_version){ user.versions.last }
 
       before do
-        user.update_attribute(:last_name, 'Jobs')
-        user.update_attribute(:last_name, 'Richert')
+        user.update_attributes(:last_name => 'Jobs')
+        user.update_attributes(:last_name => 'Richert')
 
         @count = user.versions.count
       end
@@ -93,7 +93,7 @@ describe VestalVersions::Control do
         original_id = last_version.id
         original_attrs = last_version.attributes
 
-        user.append_version{ user.update_attribute(:last_name, 'Jobs') }
+        user.append_version{ user.update_attributes(:last_name => 'Jobs') }
 
         other_last_version = user.versions(true).last
         other_last_version.id.should == original_id
@@ -105,9 +105,9 @@ describe VestalVersions::Control do
         original_attrs = last_version.attributes
 
         user.append_version do
-          user.update_attribute(:first_name, 'Stephen')
-          user.update_attribute(:last_name, 'Jobs')
-          user.update_attribute(:first_name, 'Steve')
+          user.update_attributes(:first_name => 'Stephen')
+          user.update_attributes(:last_name => 'Jobs')
+          user.update_attributes(:first_name => 'Steve')
         end
 
         other_last_version = user.versions(true).last

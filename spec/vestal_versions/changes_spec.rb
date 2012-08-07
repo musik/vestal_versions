@@ -6,7 +6,7 @@ describe VestalVersions::Changes do
     subject{ user.versions.last.changes }
 
     before do
-      user.update_attribute(:last_name, 'Jobs')
+      user.update_attributes(:last_name => 'Jobs')
     end
 
     it { should be_a(Hash) }
@@ -75,10 +75,10 @@ describe VestalVersions::Changes do
     let(:version){ user.version }
 
     before do
-      user.update_attribute(:last_name, 'Jobs')       # 2
-      user.update_attribute(:first_name, 'Stephen')   # 3
-      user.update_attribute(:last_name, 'Richert')    # 4
-      user.update_attribute(:name, name)              # 5
+      user.update_attributes(:last_name => 'Jobs')       # 2
+      user.update_attributes(:first_name => 'Stephen')   # 3
+      user.update_attributes(:last_name => 'Richert')    # 4
+      user.update_attributes(:name => name)              # 5
     end
 
     it 'is a hash' do

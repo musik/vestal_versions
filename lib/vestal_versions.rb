@@ -19,7 +19,7 @@ require 'active_record'
 #
 #   user = User.create(:name => "Steve Richert")
 #   user.version # => 1
-#   user.update_attribute(:name, "Steve Jobs")
+#   user.update_attributes(:name, "Steve Jobs")
 #   user.version # => 2
 #   user.revert_to(1)
 #   user.name # => "Steve Richert"

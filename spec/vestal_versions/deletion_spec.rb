@@ -7,7 +7,7 @@ describe VestalVersions::Deletion do
   context "a deleted version's changes" do
 
     before do
-      subject.update_attribute(:last_name, 'Jobs')
+      subject.update_attributes(:last_name => 'Jobs')
     end
 
     it "removes the original record" do
@@ -30,7 +30,7 @@ describe VestalVersions::Deletion do
   context "deleted versions" do
     let(:last_version){ VestalVersions::Version.last }
     before do
-      subject.update_attribute(:last_name, 'Jobs')
+      subject.update_attributes(:last_name => 'Jobs')
       subject.destroy
     end
 

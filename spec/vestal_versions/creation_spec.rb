@@ -18,7 +18,7 @@ describe VestalVersions::Creation do
 
     it 'does not increase when no changes are made in an update' do
       expect {
-        subject.update_attribute(:name, name)
+        subject.update_attributes(:name => name)
       }.to change{ subject.versions.count }.by(0)
     end
 
@@ -28,14 +28,14 @@ describe VestalVersions::Creation do
 
     it 'increases by one after an update' do
       expect{
-        subject.update_attribute(:last_name, 'Jobs')
+        subject.update_attributes(:last_name => 'Jobs')
       }.to change{ subject.versions.count }.by(1)
     end
 
     it 'increases multiple times after multiple updates' do
       expect{
-        subject.update_attribute(:last_name, 'Jobs')
-        subject.update_attribute(:first_name, 'Brian')
+        subject.update_attributes(:last_name => 'Jobs')
+        subject.update_attributes(:first_name => 'Brian')
       }.to change{ subject.versions.count }.by(2)
     end
 
@@ -43,7 +43,7 @@ describe VestalVersions::Creation do
 
   context "a created version's changes" do
     before do
-      subject.update_attribute(:last_name, 'Jobs')
+      subject.update_attributes(:last_name => 'Jobs')
     end
 
     it 'does not contain Rails timestamps' do
@@ -54,14 +54,14 @@ describe VestalVersions::Creation do
 
     it 'allows the columns tracked to be restricted via :only' do
       User.prepare_versioned_options(:only => [:first_name])
-      subject.update_attribute(:name, 'Steven Tyler')
+      subject.update_attributes(:name => 'Steven Tyler')
 
       subject.versions.last.changes.keys.should == ['first_name']
     end
 
     it 'allows specific columns to be excluded via :except' do
       User.prepare_versioned_options(:except => [:first_name])
-      subject.update_attribute(:name, 'Steven Tyler')
+      subject.update_attributes(:name => 'Steven Tyler')
 
       subject.versions.last.changes.keys.should_not include('first_name')
     end
@@ -69,7 +69,7 @@ describe VestalVersions::Creation do
     it "prefers :only to :except" do
       User.prepare_versioned_options(:only => [:first_name],
         :except => [:first_name])
-      subject.update_attribute(:name, 'Steven Tyler')
+      subject.update_attributes(:name => 'Steven Tyler')
 
       subject.versions.last.changes.keys.should == ['first_name']
     end
@@ -77,7 +77,7 @@ describe VestalVersions::Creation do
 
   context 'first version' do
     it 'is number 2 after an update' do
-      subject.update_attribute(:last_name, 'Jobs')
+      subject.update_attributes(:last_name => 'Jobs')
       subject.versions.first.number.should == 2
     end
 

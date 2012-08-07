@@ -14,11 +14,11 @@ describe VestalVersions::Reversion do
     time = names.size.hours.ago
 
     names.each do |name|
-      subject.update_attribute(:name, name)
+      subject.update_attributes(:name => name)
       attributes[subject.version] = subject.attributes
       time += 1.hour
 
-      subject.versions.last.try(:update_attribute, :created_at, time)
+      subject.versions.last.try(:update_attributes, :created_at => time)
 
       times[subject.version] = time
     end

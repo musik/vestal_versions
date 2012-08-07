@@ -55,8 +55,8 @@ module VestalVersions
     #   user.version # => 1
     #   user.merge_version do
     #     user.update_attributes(:first_name => "Steven", :last_name => "Tyler")
-    #     user.update_attribute(:first_name, "Stephen")
-    #     user.update_attribute(:last_name, "Richert")
+    #     user.update_attributes(:first_name, "Stephen")
+    #     user.update_attributes(:last_name, "Richert")
     #   end
     #   user.version # => 2
     #   user.versions.last.changes

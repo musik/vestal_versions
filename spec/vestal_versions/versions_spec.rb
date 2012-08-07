@@ -11,11 +11,11 @@ describe VestalVersions::Versions do
     time = names.size.hours.ago
 
     names.each do |name|
-      subject.update_attribute(:name, name)
+      subject.update_attributes(:name => name)
       subject.tag_version(subject.version.to_s)
       time += 1.hour
 
-      subject.versions.last.update_attribute(:created_at, time)
+      subject.versions.last.update_attributes(:created_at => time)
       times[subject.version] = time
     end
   end

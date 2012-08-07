@@ -7,7 +7,7 @@ describe VestalVersions::Reset do
 
   subject{ User.new }
   let(:versions){ names.map{ |name|
-    subject.update_attribute :name, name
+    subject.update_attributes :name => name
     subject.version
   } }
 

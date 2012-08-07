@@ -4,7 +4,7 @@ describe VestalVersions::VersionTagging do
   let(:user){ User.create(:name => 'Steve Richert') }
 
   before do
-    user.update_attribute(:last_name, 'Jobs')
+    user.update_attributes(:last_name => 'Jobs')
   end
 
   context 'an untagged version' do

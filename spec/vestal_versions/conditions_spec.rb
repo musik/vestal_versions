@@ -43,7 +43,7 @@ describe VestalVersions::Conditions do
       context 'that pass' do
         before do
           User.prepare_versioned_options(:if => [:true])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count + 1 }
@@ -52,7 +52,7 @@ describe VestalVersions::Conditions do
       context 'that fail' do
         before do
           User.prepare_versioned_options(:if => [:false])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count }
@@ -63,7 +63,7 @@ describe VestalVersions::Conditions do
       context 'that pass' do
         before do
           User.prepare_versioned_options(:unless => [:true])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count }
@@ -72,7 +72,7 @@ describe VestalVersions::Conditions do
       context 'that fail' do
         before do
           User.prepare_versioned_options(:unless => [:false])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count + 1 }
@@ -83,7 +83,7 @@ describe VestalVersions::Conditions do
       context 'that pass' do
         before do
           User.prepare_versioned_options(:if => [:true], :unless => [:true])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count }
@@ -92,7 +92,7 @@ describe VestalVersions::Conditions do
       context 'that fail' do
         before do
           User.prepare_versioned_options(:if => [:false], :unless => [:false])
-          subject.update_attribute(:last_name, 'Jobs')
+          subject.update_attributes(:last_name => 'Jobs')
         end
 
         its('versions.count'){ should == count }
