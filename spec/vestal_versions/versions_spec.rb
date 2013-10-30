@@ -23,14 +23,14 @@ describe VestalVersions::Versions do
   it 'is searchable between two valid version values' do
     times.keys.each do |number|
       times.values.each do |time|
-        subject.versions.between(number, number).should be_a(Array)
-        subject.versions.between(number, time).should be_a(Array)
-        subject.versions.between(time, number).should be_a(Array)
-        subject.versions.between(time, time).should be_a(Array)
-        subject.versions.between(number, number).should_not be_empty
-        subject.versions.between(number, time).should_not be_empty
-        subject.versions.between(time, number).should_not be_empty
-        subject.versions.between(time, time).should_not be_empty
+        subject.versions.between(number, number).to_a.should be_a(Array)
+        subject.versions.between(number, time).to_a.should be_a(Array)
+        subject.versions.between(time, number).to_a.should be_a(Array)
+        subject.versions.between(time, time).to_a.should be_a(Array)
+        subject.versions.between(number, number).to_a.should_not be_empty
+        subject.versions.between(number, time).to_a.should_not be_empty
+        subject.versions.between(time, number).to_a.should_not be_empty
+        subject.versions.between(time, time).to_a.should_not be_empty
       end
     end
   end
