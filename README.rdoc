@@ -1,4 +1,10 @@
-= vestal_versions for Rails 3
+= Vestal Versions
+
+{<img src="https://badge.fury.io/rb/vestal_versions.png" alt="Gem Version" />}[http://badge.fury.io/rb/vestal_versions]
+{<img src="https://travis-ci.org/laserlemon/vestal_versions.png?branch=master" alt="Build Status" />}[https://travis-ci.org/laserlemon/vestal_versions]
+{<img src="https://codeclimate.com/github/laserlemon/vestal_versions.png" alt="Code Climate" />}[https://codeclimate.com/github/laserlemon/vestal_versions]
+{<img src="https://coveralls.io/repos/laserlemon/vestal_versions/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/laserlemon/vestal_versions]
+{<img src="https://gemnasium.com/laserlemon/vestal_versions.png" alt="Dependency Status" />}[https://gemnasium.com/laserlemon/vestal_versions]
 
 Finally, DRY ActiveRecord versioning!
 
@@ -10,13 +16,17 @@ And that's just what <tt>vestal_versions</tt> does. Not only can a model be reve
 
 == Compatibility
 
-Tested with Active Record 3.0.3 with Ruby 1.8.7 and 1.9.2.
+Tested with Active Record 3.2.16 with Ruby 1.9.3 and 1.9.2.
 
 == Installation
 
 In the Gemfile:
 
-  gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
+** Note: I am giving this project some much needed love to keep her relevant in a post Rails 3 world. I will be finalizing a version to support 1.9.2+ and Rails 3.2+ soon and pushing the gem, till then, use the git repo:
+~dreamr
+  
+  gem 'vestal_versions', :git => 'git://github.com/laserlemon/vestal_versions'
+  
 
 Next, generate and run the first and last versioning migration you'll ever need:
 

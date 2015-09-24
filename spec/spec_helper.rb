@@ -1,6 +1,12 @@
+if ENV['COVERAGE']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
+require 'vestal_versions'
+
 require 'bundler'
-Bundler.require
-require 'rspec/core'
+Bundler.require(:test)
 
 RSpec.configure do |c|
   c.before(:suite) do
@@ -15,6 +21,8 @@ RSpec.configure do |c|
     VestalVersions::Version.config.clear
     User.prepare_versioned_options({})
   end
+
+  c.order = 'random'
 end
 
 Dir[File.expand_path('../support/*.rb', __FILE__)].each{|f| require f }
