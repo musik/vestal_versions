@@ -6,14 +6,18 @@ describe VestalVersions::Creation do
 
   context 'the number of versions' do
 
-    its('versions.count'){ should == 0 }
+    it 'starts at 0' do
+      subject.versions.count.should == 0
+    end
 
     context 'with :initial_version option' do
       before do
         User.prepare_versioned_options(:initial_version => true)
       end
 
-      its('versions.count'){ should == 1 }
+      it 'starts at 1' do
+        subject.versions.count.should == 1
+      end
     end
 
     it 'does not increase when no changes are made in an update' do
