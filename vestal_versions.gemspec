@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |gem|
   gem.name    = 'vestal_versions'
-  gem.version = '2.0.1'
+  gem.version = '2.0.2'
 
-  gem.authors     = ['Steve Richert', "James O'Kelly", 'C. Jason Harrelson']
-  gem.email       = ['steve.richert@gmail.com', 'dreamr.okelly@gmail.com', 'jason@lookforwardenterprises.com']
+  gem.authors     = ['Steve Richert', "James O'Kelly", 'C. Jason Harrelson', 'Scott Willson']
+  gem.email       = ['steve.richert@gmail.com', 'dreamr.okelly@gmail.com', 'jason@lookforwardenterprises.com', 'scott.willson@gmail.com']
   gem.description = "Keep a DRY history of your ActiveRecord models' changes"
   gem.summary     = gem.description
   gem.homepage    = 'http://github.com/laserlemon/vestal_versions'
